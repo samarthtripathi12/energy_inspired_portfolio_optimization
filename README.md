@@ -133,10 +133,10 @@ The simulations combine numerical optimization, visualization, and financial the
 - Compares optimizer outcomes and convergence  
 
 **Static Plots:**  
-![Phase 3: Loss Convergence](plots/phase3_loss_convergence.png)  
+![Phase 3: Loss Convergence](plots/loss_vs_iterations.png)  
 
 **Animation / GIF:**  
-![Phase 3: Portfolio Weights Convergence](gifs/phase3_weights_convergence.gif)  
+None  
 
 **End-state / Outputs:**  
 - Script: `scripts/phase3_advanced_optimization.py`  
