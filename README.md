@@ -159,10 +159,10 @@ The simulations combine numerical optimization, visualization, and financial the
 - Highlights minima and convergence directions.  
 
 **Animation / GIF:**  
-![Phase 4: Weights Convergence](gifs/phase4_weights_convergence.gif)  
+![Phase 4: Weights Convergence](gifs/weights_convergence.gif)  
 
 **Static Plot:**  
-![Phase 4: Energy Landscape](plots/phase4_energy_landscape.png)  
+None  
 
 **End-state / Outputs:**  
 - Script: `scripts/phase4_energy_landscape.py`  
@@ -185,8 +185,7 @@ The simulations combine numerical optimization, visualization, and financial the
 - Computes daily returns and portfolio evolution  
 
 **Static Plots:**  
-![Phase 5: Simulated Asset Paths](plots/phase5_simulated_asset_paths.png)  
-![Phase 5: Daily Returns](plots/phase5_daily_returns.png)  
+None
 
 **End-state / Outputs:**  
 - Script: `scripts/phase5_simulated_data.py`  
@@ -204,8 +203,8 @@ The simulations combine numerical optimization, visualization, and financial the
 “How does Adam optimizer compare with standard gradient descent?”
 
 **Static Plots:**  
-![Phase 6: Gradient Descent Convergence](plots/phase6_gradient_descent.png)  
-![Phase 6: Optimizer Comparison](plots/phase6_optimizer_comparison.png)  
+![Phase 6: Gradient Descent Convergence](plots/energy_convergence.png)  
+![Phase 6_1 : Optimizer Comparison](plots/phase6_1_optimizer_comparison.png)  
 
 **End-state / Outputs:**  
 - Script: `scripts/phase6_optimizer_comparison.py`  
