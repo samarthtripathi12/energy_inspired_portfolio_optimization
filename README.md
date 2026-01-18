@@ -1,18 +1,17 @@
-# Energy-Inspired Portfolio Optimization via Gradient Descent
+# Energy-Inspired Portfolio Optimization
 
-Simulates portfolio optimization using physics-inspired energy minimization, gradient descent, and finance concepts. Combines interdisciplinary STEM, CS, and finance thinking.
+Simulates portfolio optimization using physics-inspired energy minimization, gradient descent, and finance concepts.
 
 ---
 
 ## Abstract
 
-This project implements a portfolio optimization framework inspired by physics energy minimization. It progressively explores risk-return trade-offs under:
+This project implements a portfolio optimization framework inspired by physics energy minimization. It progressively explores:
 
 1. **Simulated asset returns and covariances**  
-2. **Real financial data integration**  
-3. **Advanced optimization techniques (Gradient Descent, Adam)**  
-4. **Efficient Frontier visualization**  
-5. **Energy landscape analysis**  
+2. **Gradient descent optimization with energy-based loss**  
+3. **Advanced optimizers (Adam vs Gradient Descent)**  
+4. **Efficient Frontier and robust portfolio analysis**  
 
 The simulations combine numerical optimization, visualization, and financial theory to demonstrate practical portfolio allocation and interdisciplinary reasoning.
 
@@ -20,34 +19,31 @@ The simulations combine numerical optimization, visualization, and financial the
 
 ## Why This Project
 
-- Demonstrates an interdisciplinary approach: physics → CS → finance.  
-- Shows hands-on implementation of optimization algorithms.  
-- Highlights advanced numerical methods (gradient descent, Adam optimizer).  
-- Verifies optimization outcomes through visualization and metrics.  
-- Combines static plots, animations, and energy-based visualization for storytelling.
+- Demonstrates how physics-inspired energy concepts can guide portfolio optimization.  
+- Highlights hands-on implementation of gradient descent and advanced optimizers.  
+- Visualizes optimizer convergence, efficient frontiers, and robust portfolio performance.  
+- Combines static plots and GIFs to illustrate optimization progression and results.
 
 ---
 
 ## Development Iterations
 
-- **Phase 0:** Project setup, folders, environment.  
-- **Phase 1:** Parameter definition (number of assets, expected returns, covariance, hyperparameters).  
-- **Phase 2:** Initial gradient descent implementation on simulated data.  
-- **Phase 3:** Verification with risk-return metrics and plots.  
-- **Phase 4:** Energy landscape visualization.  
-- **Phase 5:** Real financial data integration.  
-- **Phase 6:** Advanced optimizers (Adam vs Gradient Descent comparison).  
-- **Phase 7:** Efficient Frontier & risk-return visualization.  
+- **v1.0:** Parameter setup and simulated data  
+- **v2.0:** Gradient descent implementation and energy convergence  
+- **v3.0:** Advanced optimization techniques and verification  
+- **v4.0:** Weights convergence visualization  
+- **v5.0:** Real and simulated data integration  
+- **v6.0:** Optimizer comparison (Gradient Descent vs Adam)  
+- **v7.0:** Efficient Frontier and robust portfolio evaluation  
 
 ---
 
 ## Verification
 
-- Loss convergence verified across iterations  
-- Portfolio risk and returns tracked  
-- Optimized weights validated  
-- Energy terms minimized  
-- Efficient frontier matches financial theory
+- Loss and energy convergence verified  
+- Portfolio weights tracked across iterations  
+- Optimized risk-return trade-offs validated  
+- Efficient frontier matches theoretical expectations  
 
 ---
 
@@ -58,29 +54,8 @@ The simulations combine numerical optimization, visualization, and financial the
 - Pandas  
 - Matplotlib  
 - SciPy  
-- yfinance (Phase 5)  
-- Plotly / Plotly Express (optional for interactive dashboard)  
-
----
-
-## Phase 0: Setup
-
-**Objective:** Prepare project structure and environment.
-
-**Implementation:**
-- Create project folders: `scripts/`, `data/`, `plots/`, `gifs/`  
-- Create virtual environment: `project8_env`  
-- Activate environment, install dependencies
-
-**End-state / Outputs:**
-- `scripts/` folder for all Python scripts  
-- `data/` folder for storing CSVs  
-- `plots/` folder for static plots  
-- `gifs/` folder for animated outputs  
-
-**What This Proves:**  
-- Organized project structure  
-- Environment ready for reproducible computation  
+- yfinance (for real financial data)  
+- Plotly / Plotly Express (optional for interactive visualization)  
 
 ---
 
@@ -89,213 +64,190 @@ The simulations combine numerical optimization, visualization, and financial the
 **Scientific Question:**  
 “What are the initial portfolio parameters and constraints?”
 
-**Implementation:**
+**Description:**  
+- Defines number of assets, expected returns, and covariance matrix.  
+- Sets hyperparameters λ (risk factor) and γ (energy penalty).  
+- Initializes portfolio weights and constraints (no shorting).  
+
+**Implementation:**  
 - Number of assets: `N = 5`  
-- Expected returns: `μ = [0.05, 0.08, 0.12, 0.07, 0.09]`  
+- Expected returns: `[0.05, 0.08, 0.12, 0.07, 0.09]`  
 - Covariance matrix Σ (risk between asset pairs)  
-- Hyperparameters: λ = 0.5 (risk-return tradeoff), γ = 0.1 (energy penalty)  
-- Initial portfolio weights: `w = [0.2, 0.2, 0.2, 0.2, 0.2]`  
+- Initial weights: `[0.2, 0.2, 0.2, 0.2, 0.2]`  
 
 **End-state / Outputs:**  
 - Script: `scripts/phase1_setup.py`  
-- Inputs saved in Python variables  
-- Ready for optimization  
+- Inputs initialized for optimization  
 
 **What This Proves:**  
-- Clear problem definition and initial setup  
-- Baseline for gradient descent optimization  
+- Clear problem definition  
+- Baseline setup for optimization phases  
 
 ---
 
-## Phase 2: Gradient Descent on Simulated Data
+## Phase 2: Gradient Descent & Energy Convergence
 
 **Scientific Question:**  
-“How does gradient descent optimize a portfolio using simulated returns and risk?”
+“How does the portfolio energy/loss evolve with different risk-return and energy parameters?”
 
-**Implementation:**
-- Gradient descent loop for loss minimization: `Loss = -w.T @ μ + λ * w.T @ Σ @ w + γ * ||w||^2`  
-- Track: loss vs iterations, portfolio risk, return  
-- Static plots: loss convergence, weight evolution
+**Description:**  
+- Runs gradient descent optimization for portfolio weights.  
+- Explores 9 λ–γ combinations to study convergence and energy landscape.  
 
-**Static Plot:**  
-![Phase 2: Loss Convergence](plots/phase2_loss_convergence.png)  
+**Static Plots:**  
+
+| λ | γ | Plot |
+|---|---|------|
+| 0.3 | 0.05 | ![Phase 2: Lambda 0.3, Gamma 0.05](plots/loss_lambda0.3_gamma0.05.png) |
+| 0.3 | 0.1 | ![Phase 2: Lambda 0.3, Gamma 0.1](plots/loss_lambda0.3_gamma0.1.png) |
+| 0.3 | 0.2 | ![Phase 2: Lambda 0.3, Gamma 0.2](plots/loss_lambda0.3_gamma0.2.png) |
+| 0.5 | 0.05 | ![Phase 2: Lambda 0.5, Gamma 0.05](plots/loss_lambda0.5_gamma0.05.png) |
+| 0.5 | 0.1 | ![Phase 2: Lambda 0.5, Gamma 0.1](plots/loss_lambda0.5_gamma0.1.png) |
+| 0.5 | 0.2 | ![Phase 2: Lambda 0.5, Gamma 0.2](plots/loss_lambda0.5_gamma0.2.png) |
+| 0.7 | 0.05 | ![Phase 2: Lambda 0.7, Gamma 0.05](plots/loss_lambda0.7_gamma0.05.png) |
+| 0.7 | 0.1 | ![Phase 2: Lambda 0.7, Gamma 0.1](plots/loss_lambda0.7_gamma0.1.png) |
+| 0.7 | 0.2 | ![Phase 2: Lambda 0.7, Gamma 0.2](plots/loss_lambda0.7_gamma0.2.png) |
+
+**Key Features:**  
+- X-axis: Iterations  
+- Y-axis: Energy / Loss  
+- Shows parameter-dependent convergence  
 
 **End-state / Outputs:**  
 - Script: `scripts/phase2_gradient_descent.py`  
-- Plots: `plots/phase2_loss_convergence.png`  
-- Outputs: optimized weights
+- Plots: 9 PNGs in `plots/`  
 
 **What This Proves:**  
-- Gradient descent can optimize portfolio weights  
-- Energy term effectively discourages extreme allocations  
+- Gradient descent convergence varies with λ and γ  
+- Provides parameter guidance for optimization  
 
 ---
 
-## Phase 3: Verification & Metrics
+## Phase 3: Advanced Optimization & Verification
 
 **Scientific Question:**  
-“Are the results reliable and interpretable?”
+“Are the optimization results reliable and interpretable?”
 
-**Implementation:**
-- Verify portfolio risk and return  
-- Track convergence  
-- Compare final weights with expected outcomes  
+**Description:**  
+- Tracks portfolio risk and returns  
+- Compares optimizer outcomes and convergence  
 
 **Static Plots:**  
-- Portfolio weights bar chart  
-- Risk vs return scatter
+![Phase 3: Loss Convergence](plots/phase3_loss_convergence.png)  
+
+**Animation / GIF:**  
+![Phase 3: Portfolio Weights Convergence](gifs/phase3_weights_convergence.gif)  
 
 **End-state / Outputs:**  
-- Script: `scripts/phase3_verification.py`  
-- Plots: `plots/phase3_weights_bar.png`, `plots/phase3_risk_return.png`  
+- Script: `scripts/phase3_advanced_optimization.py`  
+- Plots: `phase3_loss_convergence.png`  
+- GIF: `phase3_weights_convergence.gif`  
 
 **What This Proves:**  
-- Correct implementation of loss function and optimization  
-- Verification ensures reproducibility  
+- Validates optimization results  
+- Confirms reproducibility and convergence  
 
 ---
 
-## Phase 4: Energy Landscape Visualization
+## Phase 4: Weights Convergence / Energy Landscape
 
 **Scientific Question:**  
-“What does the optimization landscape look like?”
+“What does the energy landscape look like for portfolio weights?”
 
-**Implementation:**
-- 3D surface plot: Loss vs weights combinations  
-- Visualize gradient descent path over energy landscape  
-- Highlight minima and convergence direction  
+**Description:**  
+- Visualizes how portfolio weights evolve along the energy surface.  
+- Highlights minima and convergence directions.  
+
+**Animation / GIF:**  
+![Phase 4: Weights Convergence](gifs/phase4_weights_convergence.gif)  
 
 **Static Plot:**  
 ![Phase 4: Energy Landscape](plots/phase4_energy_landscape.png)  
 
 **End-state / Outputs:**  
 - Script: `scripts/phase4_energy_landscape.py`  
-- Plot: `plots/phase4_energy_landscape.png`  
+- GIF: `phase4_weights_convergence.gif`  
+- Plot: `phase4_energy_landscape.png`  
 
 **What This Proves:**  
-- Gradient descent path follows energy minimization principles  
-- Interdisciplinary link: physics-inspired energy to finance  
+- Gradient descent follows energy minimization  
+- Links physics-inspired energy to portfolio optimization  
 
 ---
 
-## Phase 5: Real Financial Data Integration
+## Phase 5: Data Generation & Simulation
 
 **Scientific Question:**  
-“Can real stock data improve practical portfolio optimization?”
+“Can simulated asset paths demonstrate portfolio behavior?”
 
-**Implementation:**
-- Use `yfinance` to fetch historical prices for: `AAPL, MSFT, GOOGL, AMZN, TSLA`  
-- Compute expected returns and covariance from real data  
-- Run gradient descent on real data  
-- Track optimized weights and risk-return  
+**Description:**  
+- Generates synthetic asset prices  
+- Computes daily returns and portfolio evolution  
 
-**Static Plot:**  
-![Phase 5: Real Data Weights](plots/phase5_real_weights.png)  
+**Static Plots:**  
+![Phase 5: Simulated Asset Paths](plots/phase5_simulated_asset_paths.png)  
+![Phase 5: Daily Returns](plots/phase5_daily_returns.png)  
 
 **End-state / Outputs:**  
-- Script: `scripts/phase5_real_data.py`  
-- Plots: `plots/phase5_real_weights.png`  
-- Data CSVs: `data/real_stock_prices.csv`  
+- Script: `scripts/phase5_simulated_data.py`  
+- Plots: simulated asset paths and daily returns  
 
 **What This Proves:**  
-- Framework works with actual market data  
-- Outputs practically relevant optimized portfolios  
+- Optimization framework works with synthetic data  
+- Demonstrates risk-return evolution visually  
 
 ---
 
-## Phase 6: Advanced Optimizers (Gradient Descent vs Adam)
+## Phase 6: Optimizer Comparison
 
 **Scientific Question:**  
-“Do advanced optimizers converge faster and better than standard gradient descent?”
+“How does Adam optimizer compare with standard gradient descent?”
 
-**Implementation:**
-- Implement Adam optimizer alongside gradient descent  
-- Compare convergence speed, loss, and final weights  
-- Plot: loss vs iterations for both optimizers  
-
-**Static Plot:**  
+**Static Plots:**  
+![Phase 6: Gradient Descent Convergence](plots/phase6_gradient_descent.png)  
 ![Phase 6: Optimizer Comparison](plots/phase6_optimizer_comparison.png)  
 
 **End-state / Outputs:**  
-- Script: `scripts/phase6_advanced_optimizers.py`  
-- Plots: `plots/phase6_optimizer_comparison.png`  
+- Script: `scripts/phase6_optimizer_comparison.py`  
+- Plots: gradient descent vs Adam comparison  
 
 **What This Proves:**  
-- Understanding of CS numerical methods  
-- Adam optimizer often converges faster and avoids local minima  
+- Adam converges faster and avoids local minima  
+- Demonstrates advanced optimization techniques  
 
 ---
 
-## Phase 7: Efficient Frontier & Risk-Return Visualization
+## Phase 7: Efficient Frontier & Robust Optimization
 
 **Scientific Question:**  
-“How does the portfolio perform across varying risk-return trade-offs?”
+“How does portfolio performance vary under risk-return trade-offs?”
 
-**Implementation:**
-- Compute optimized portfolios for multiple λ values  
-- Plot Efficient Frontier: Risk (x-axis) vs Return (y-axis)  
-- Optionally animate how weights move along the frontier  
-
-**Static Plot:**  
+**Static Plots:**  
 ![Phase 7: Efficient Frontier](plots/phase7_efficient_frontier.png)  
+![Phase 7: Robust vs Standard Portfolio](plots/phase7_robust_vs_standard.png)  
 
 **End-state / Outputs:**  
 - Script: `scripts/phase7_efficient_frontier.py`  
-- Plot: `plots/phase7_efficient_frontier.png`  
+- Plots: efficient frontier and robust portfolio comparison  
 
 **What This Proves:**  
-- Demonstrates financial maturity  
-- Shows optimal portfolio selection under varying risk tolerance  
-
----
-
-## Phase 8 (Optional): Interactive Dashboard
-
-**Scientific Question:**  
-“Can users interactively explore portfolio optimization?”
-
-**Implementation:**
-- Streamlit / Plotly Dash interactive sliders for λ & γ  
-- Live update of optimized weights, loss, energy, and efficient frontier  
-- Optional for reviewer exploration  
-
-**End-state / Outputs:**  
-- Script: `scripts/phase8_dashboard.py`  
-- Runs in browser locally  
-
-**What This Proves:**  
-- Integrates CS, STEM, and finance for a fully interactive experience  
-
----
-
-## Phase 9: Documentation & Storytelling
-
-**Objective:**  
-- Compile all phase-wise results  
-- Embed plots, GIFs, tables  
-- Explain interdisciplinary connections clearly  
-
-**End-state / Outputs:**  
-- README.md (this file)  
-- Organized `plots/`, `scripts/`, `data/`, and `gifs/` folders  
-
-**What This Proves:**  
-- Strong research communication  
-- Portfolio-ready, MIT-level project presentation  
+- Visualizes optimal portfolios  
+- Confirms robust vs standard portfolio performance  
 
 ---
 
 ## Conclusion
 
-This project demonstrates **portfolio optimization inspired by physics**, progressing from:
+This project demonstrates **energy-inspired portfolio optimization**, progressing from:
 
-1. Simulated asset data  
+1. Parameter setup and simulated assets  
 2. Gradient descent optimization  
 3. Advanced optimizers (Adam)  
-4. Real financial data application  
-5. Efficient Frontier visualization  
-6. Energy landscape understanding  
+4. Weights convergence & energy landscape visualization  
+5. Simulated asset paths and returns  
+6. Optimizer comparisons  
+7. Efficient frontier and robust portfolios  
 
-- All results are rigorously validated through static plots, animations, and quantitative metrics, demonstrating both the stability and accuracy of the optimization algorithms.  
-- The project integrates **computational physics concepts, advanced optimization techniques, and real-world financial data**, offering a unique interdisciplinary perspective.  
-- Phase-wise documentation, combined with energy-inspired visualizations and efficient frontier analysis, ensures full reproducibility while presenting a compelling, research-grade narrative suitable for academic or professional review.
+- All results verified through static plots and GIFs.  
+- Demonstrates interdisciplinary approach: physics-inspired energy + numerical optimization + finance.  
+- Phase-wise documentation ensures reproducibility and clear storytelling.
